@@ -1,0 +1,26 @@
+{
+    "title": "Урок 2",
+    "tasks": [
+        {
+            "type": "match",
+            "word": "to flunk",
+            "options": [
+                "завалити (екзамен)",
+                "потонути",
+                "знищити",
+                "відшити"
+            ],
+            "correctAnswer": "завалити (екзамен)"
+        },
+        {
+            "type": "write",
+            "word": "двір",
+            "correctAnswer": "yard"
+        },
+        {
+            "type": "write",
+            "word": "крісло",
+            "correctAnswer": "chair"
+        }
+    ]
+}
