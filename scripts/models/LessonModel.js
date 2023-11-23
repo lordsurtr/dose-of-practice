@@ -3,8 +3,10 @@
 class LessonModel {
  
     async getLesson (code){
-        const lesson = await fetch(`../../lessons/lesson-${code}.json`)
-        return await lesson.json()
+        // const lesson = await fetch(`../../lessons/lesson-${code}.json`)
+        const lesson = await import(`../../lessons/lesson-${code}.js`)
+        // return await lesson.json()
+        return lesson.default
     }
 
     getWordsFromLesson (lesson) {
