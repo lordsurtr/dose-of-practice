@@ -73,6 +73,14 @@ const handleAgainBtn = () => {
     welcomeScreenView.render(currentLesson.title, lessonModel.getWordsFromLesson(currentLesson))
 }
 
+const handleAllWordsSwitchToggle = (on) => {
+    console.log(on)
+}
+
+const handleIncludeListeningExercisesSwitchToggle = (on) => {
+    console.log(on)
+}
+
 const start = async () => {
     const lesson = await lessonModel.getLesson('2')
     currentLesson = lesson
@@ -80,6 +88,8 @@ const start = async () => {
     const words = lessonModel.getWordsFromLesson(lesson)
     welcomeScreenView.render(lesson.title, words)
     welcomeScreenView.bindStartBtn(handleStartBtn)
+    welcomeScreenView.bindAllWordsSwitchToggle(handleAllWordsSwitchToggle)
+    welcomeScreenView.bindIncludeListeningExercisesSwitchToggle(handleIncludeListeningExercisesSwitchToggle)
     taskScreenView.bindCheckBtn(handleCheckBtn)
     checkDialogView.bindNextBtn(handleNextBtn)
     resultScreenView.bindViewAnswersBtn(handleViewAnswersBtn)

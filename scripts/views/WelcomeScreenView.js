@@ -1,5 +1,6 @@
 
 import { createElement, clearContainer } from "./ViewHelpers.js"
+import SwitchView from "./SwitchView.js"
 
 class WelcomeScreenView {
     constructor() {
@@ -15,20 +16,11 @@ class WelcomeScreenView {
         this.wordContainer = createElement('div', ['word-container'])
         this.screen.appendChild(this.wordContainer)
 
-        // TODO: move the switch into a seperate component
-        this.allWordsContainer = createElement('div', ['switch-container'])
-        this.allWordsSwitch = createElement('label', ['switch'])
-        this.allWordsSwitchInput = createElement('input')
-        this.allWordsSwitchInput.setAttribute('type', 'checkbox')
-        this.allWordsSwitch.appendChild(this.allWordsSwitchInput)
-        this.allWordsSwitchSlider = createElement('span', ['slider'])
-        this.allWordsSwitch.appendChild(this.allWordsSwitchSlider)
-        this.allWordsContainer.appendChild(this.allWordsSwitch)
+        this.allWordsSwitchView = new SwitchView('вибрати всі слова', true)
+        this.screen.appendChild(this.allWordsSwitchView.get())
 
-        this.allWordsSwitchText = createElement('p', ['switch-text'], 'вибрати всі слова')
-        this.allWordsContainer.appendChild(this.allWordsSwitchText)
-
-        this.screen.appendChild(this.allWordsContainer)
+        this.includeListeningExercisesSwitchView = new SwitchView('вправи з аудіо', true)
+        this.screen.appendChild(this.includeListeningExercisesSwitchView.get())
 
         this.startBtn = createElement('button', ['action-button', 'welcome-start-button'], 'почнімо')
         this.screen.appendChild(this.startBtn)
@@ -39,6 +31,14 @@ class WelcomeScreenView {
         this.startBtn.addEventListener('click', () => {
             handler()
         })
+    }
+
+    bindAllWordsSwitchToggle(handler) {
+        this.allWordsSwitchView.bindToggle(handler)
+    }
+
+    bindIncludeListeningExercisesSwitchToggle(handler) {
+        this.includeListeningExercisesSwitchView.bindToggle(handler)
     }
 
     render(title, words) {

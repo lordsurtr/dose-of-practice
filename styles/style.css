@@ -96,6 +96,7 @@ button:focus {
     width: 60px;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .switch input {
