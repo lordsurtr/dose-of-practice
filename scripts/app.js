@@ -5,6 +5,7 @@ import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
+import { shuffleArray } from './Helpers.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -16,10 +17,10 @@ const answersDialogView = new AnswersDialogView()
 let currentLesson
 let currentTask = 0
 let answerLog = []
-let selectedWords = []
+let currentTasks = []
 
 const isCorrect = (userAnswer, task) => {
-    if(userAnswer == task.correctAnswer) {
+    if(task.correctAnswers.includes(userAnswer.toLowerCase())) {
         return true
     } else {
         return false
@@ -27,22 +28,24 @@ const isCorrect = (userAnswer, task) => {
 }
 
 const handleStartBtn = () => {
+    currentTasks = shuffleArray(currentLesson.tasks)
     taskScreenView.render()
-    taskScreenView.renderTask(currentLesson.tasks[currentTask])
+    console.log(currentTasks)
+    taskScreenView.renderTask(currentTasks[currentTask])
 }
 
 const handleCheckBtn = (answer) => {
-    const thisTask = currentLesson.tasks[currentTask]
+    const thisTask = currentTasks[currentTask]
     const isAnswerCorrect = isCorrect(answer, thisTask)
 
     answerLog.push({
         type: thisTask.type,
-        correctAnswer: `${thisTask.word} - ${thisTask.correctAnswer}`,
+        correctAnswer: `${thisTask.word} - ${thisTask.correctAnswers[0]}`,
         userAnswer: answer,
         correct: isAnswerCorrect,
     })
 
-    checkDialogView.setDialog(isAnswerCorrect, `${thisTask.word} - ${thisTask.correctAnswer}`)
+    checkDialogView.setDialog(isAnswerCorrect, `${thisTask.questionWord} - ${thisTask.correctAnswers[0]}`)
     checkDialogView.toggleDialog(true)
 }
 
@@ -51,7 +54,6 @@ const handleNextBtn = () => {
     if(currentTask >= currentLesson.tasks.length) {
         resultScreenView.render()
         checkDialogView.toggleDialog(false)
-        console.log(answerLog)
         return
     } else {
         checkDialogView.toggleDialog(false)
@@ -74,33 +76,20 @@ const handleAgainBtn = () => {
     welcomeScreenView.render(currentLesson.title, lessonModel.getWordsFromLesson(currentLesson))
 }
 
-const handleAllWordsSwitchToggle = (on) => {
-    console.log(on)
-}
-
 const handleIncludeListeningExercisesSwitchToggle = (on) => {
     console.log(on)
 }
 
-const handleWordToggle = (word) => {
-    const foundWord = selectedWords.find(item => item.word === word)
-    foundWord.selected =  !foundWord.selected
-    welcomeScreenView.render(currentLesson.title, selectedWords)
-    welcomeScreenView.bindWordToggle(handleWordToggle)
-}
 
 const start = async () => {
     const lesson = await lessonModel.getLesson('1')
     currentLesson = lesson
 
     const words = lessonModel.getWordsFromLesson(lesson)
-    selectedWords = words
 
     welcomeScreenView.render(lesson.title, words)
     welcomeScreenView.bindStartBtn(handleStartBtn)
-    welcomeScreenView.bindAllWordsSwitchToggle(handleAllWordsSwitchToggle)
     welcomeScreenView.bindIncludeListeningExercisesSwitchToggle(handleIncludeListeningExercisesSwitchToggle)
-    welcomeScreenView.bindWordToggle(handleWordToggle)
 
     taskScreenView.bindCheckBtn(handleCheckBtn)
 

@@ -13,12 +13,12 @@ class WriteTaskView {
     }
 
     render(task) {
-        this.question.textContent = `Як перекласти ${task.word}?`
+        this.question.textContent = `Як перекласти ${task.questionWord}?`
     }
 
     bindAnswer(handler) {
 
-        this.textBox.addEventListener('input', (e) => {
+        this.textBox.addEventListener('input', () => {
             const value = this.textBox.value
             handler(value)
         })

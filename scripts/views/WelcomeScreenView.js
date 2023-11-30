@@ -10,14 +10,11 @@ class WelcomeScreenView {
         this.header = createElement('h1', ['welcome-header'])
         this.screen.appendChild(this.header)
 
-        this.chooseWordsText = createElement('p', ['small-text'], 'вибери слова для практики:')
+        this.chooseWordsText = createElement('p', ['small-text'], 'слова:')
         this.screen.appendChild(this.chooseWordsText)
 
         this.wordContainer = createElement('div', ['word-container'])
         this.screen.appendChild(this.wordContainer)
-
-        this.allWordsSwitchView = new SwitchView('вибрати всі слова', true)
-        this.screen.appendChild(this.allWordsSwitchView.get())
 
         this.includeListeningExercisesSwitchView = new SwitchView('вправи з аудіо', true)
         this.screen.appendChild(this.includeListeningExercisesSwitchView.get())
@@ -31,10 +28,6 @@ class WelcomeScreenView {
         this.startBtn.addEventListener('click', () => {
             handler()
         })
-    }
-
-    bindAllWordsSwitchToggle(handler) {
-        this.allWordsSwitchView.bindToggle(handler)
     }
 
     bindIncludeListeningExercisesSwitchToggle(handler) {
@@ -55,11 +48,8 @@ class WelcomeScreenView {
         this.header.textContent = title
         this.app.appendChild(this.screen)
 
-        words.forEach(wordObj => {
-            const wordElem = createElement('button', ['word'], wordObj.word)
-            if(wordObj.selected) {
-                wordElem.classList.add('word--selected')
-            }
+        words.forEach(word => {
+            const wordElem = createElement('button', ['word'], word)
             this.wordContainer.appendChild(wordElem)
         })
     }
