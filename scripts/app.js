@@ -51,13 +51,13 @@ const handleCheckBtn = (answer) => {
 
 const handleNextBtn = () => {
     currentTask += 1
-    if(currentTask >= currentLesson.tasks.length) {
+    if(currentTask >= currentTasks.length) {
         resultScreenView.render()
         checkDialogView.toggleDialog(false)
         return
     } else {
         checkDialogView.toggleDialog(false)
-        taskScreenView.renderTask(currentLesson.tasks[currentTask])
+        taskScreenView.renderTask(currentTasks[currentTask])
     }
 }
 
