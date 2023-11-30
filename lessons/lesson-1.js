@@ -1,40 +1,13 @@
 
 import Lesson from "./Lesson.js";
+import {MatchTask, WriteTask, ListenTask} from "./Tasks.js"
 
-const lesson = new Lesson('Урок 1', [
-    {
-        type: "match",
-        word: "to flunk",
-        options: [
-            "завалити (екзамен)",
-            "потонути",
-            "знищити",
-            "відшити"
-        ],
-        correctAnswer: "завалити (екзамен)"
-    },
-    {
-        type: "match",
-        word: "yard",
-        options: [
-            "двір",
-            "робота",
-            "будинок",
-            "мітла"
-        ],
-        correctAnswer: "двір"
-    },
-    {
-        type: "match",
-        word: "chair",
-        options: [
-            "стілець",
-            "стіл",
-            "робот",
-            "вода"
-        ],
-        correctAnswer: "стілець"
-    }
+const lesson = new Lesson('Lesson 1', [
+    new MatchTask('to flunk', 'to flunk', ['завалити (екзамен)', 'потонути', 'знищити'], ['завалити (екзамен)']),
+    new MatchTask('blanket', 'blanket', ['ковдра', 'матрас', 'ліжко'], ['ковдра']),
+    new MatchTask('laptop', 'laptop', ['ноутбук', 'комп\'ютер', 'монітор'], ['ноутбук']),
+    new WriteTask('yard', 'двір', ['yard', 'a yard', 'the yard']),
+    new WriteTask('headphones', 'навушники', ['headphones', 'the headphones']),
 ])
 
 export default lesson
