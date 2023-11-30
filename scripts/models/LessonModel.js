@@ -10,9 +10,15 @@ class LessonModel {
     }
 
     getWordsFromLesson (lesson) {
-        const words = []
+        let words = []
         lesson.tasks.forEach(task => {
-            words.push(task.word)
+            if(words.filter(item => item.words === task.word).length > 0) {
+                return
+            }
+            words.push({
+                word: task.word,
+                selected: true,
+            })
         })
 
         return words

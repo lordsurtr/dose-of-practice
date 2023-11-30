@@ -41,14 +41,25 @@ class WelcomeScreenView {
         this.includeListeningExercisesSwitchView.bindToggle(handler)
     }
 
+    bindWordToggle(handler) {
+        for(const child of this.wordContainer.children) {
+            child.addEventListener('click', () => {
+                handler(child.textContent)
+            })
+        }
+    }
+
     render(title, words) {
         clearContainer(this.app)
         clearContainer(this.wordContainer)
         this.header.textContent = title
         this.app.appendChild(this.screen)
 
-        words.forEach(word => {
-            const wordElem = createElement('button', ['word'], word)
+        words.forEach(wordObj => {
+            const wordElem = createElement('button', ['word'], wordObj.word)
+            if(wordObj.selected) {
+                wordElem.classList.add('word--selected')
+            }
             this.wordContainer.appendChild(wordElem)
         })
     }

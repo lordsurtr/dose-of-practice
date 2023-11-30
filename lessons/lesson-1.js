@@ -8,6 +8,7 @@ const lesson = new Lesson('Lesson 1', [
     new MatchTask('laptop', 'laptop', ['ноутбук', 'комп\'ютер', 'монітор'], ['ноутбук']),
     new WriteTask('yard', 'двір', ['yard', 'a yard', 'the yard']),
     new WriteTask('headphones', 'навушники', ['headphones', 'the headphones']),
+    new WriteTask('to flunk', 'завалити (екзамен)', ['to flunk', 'flunk']),
 ])
 
 export default lesson

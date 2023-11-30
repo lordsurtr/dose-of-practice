@@ -16,6 +16,7 @@ const answersDialogView = new AnswersDialogView()
 let currentLesson
 let currentTask = 0
 let answerLog = []
+let selectedWords = []
 
 const isCorrect = (userAnswer, task) => {
     if(userAnswer == task.correctAnswer) {
@@ -81,19 +82,33 @@ const handleIncludeListeningExercisesSwitchToggle = (on) => {
     console.log(on)
 }
 
+const handleWordToggle = (word) => {
+    const foundWord = selectedWords.find(item => item.word === word)
+    foundWord.selected =  !foundWord.selected
+    welcomeScreenView.render(currentLesson.title, selectedWords)
+    welcomeScreenView.bindWordToggle(handleWordToggle)
+}
+
 const start = async () => {
     const lesson = await lessonModel.getLesson('1')
     currentLesson = lesson
 
     const words = lessonModel.getWordsFromLesson(lesson)
+    selectedWords = words
+
     welcomeScreenView.render(lesson.title, words)
     welcomeScreenView.bindStartBtn(handleStartBtn)
     welcomeScreenView.bindAllWordsSwitchToggle(handleAllWordsSwitchToggle)
     welcomeScreenView.bindIncludeListeningExercisesSwitchToggle(handleIncludeListeningExercisesSwitchToggle)
+    welcomeScreenView.bindWordToggle(handleWordToggle)
+
     taskScreenView.bindCheckBtn(handleCheckBtn)
+
     checkDialogView.bindNextBtn(handleNextBtn)
+
     resultScreenView.bindViewAnswersBtn(handleViewAnswersBtn)
     resultScreenView.bindAgainBtn(handleAgainBtn)
+
     answersDialogView.bindCloseBtn(handleCloseAnswersBtn)
 }
 
