@@ -8,10 +8,10 @@ class TaskScreenView {
         this.app = document.querySelector('.app')
         this.screen = createElement('div', ['screen'])
 
-        this.taskContainer = createElement('div', ['taskContainer'])
+        this.taskContainer = createElement('div', ['task-container'])
         this.screen.appendChild(this.taskContainer)
 
-        this.checkBtn = createElement('button', [], 'перевірити')
+        this.checkBtn = createElement('button', ['check-btn', 'action-button'], 'перевірити')
         this.screen.appendChild(this.checkBtn)
 
         this.userAnswer = ''
@@ -31,6 +31,7 @@ class TaskScreenView {
                 matchTaskView.render(task)
                 matchTaskView.bindAnswer((answer) => {
                     this.userAnswer = answer
+                    this.checkBtn.classList.add('action-button--active')
                 })
                 break
             }
