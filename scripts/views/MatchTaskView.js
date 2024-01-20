@@ -14,7 +14,8 @@ class MatchTaskView {
     }
 
     render(task) {
-        this.question.textContent = `Що означає ${task.questionWord}?`
+        // this.question.textContent = `Що означає ${task.questionWord}?`
+        this.question.innerHTML = `Що означає <span class="question-highlight">${task.questionWord}</span>?`
         shuffleArray(task.options).forEach(option => {
             const optionBtn = createElement('button', ['option-btn'], option)
             const optionIndicator = createElement('div', ['option-indicator'])
