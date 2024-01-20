@@ -29,9 +29,9 @@ const isCorrect = (userAnswer, task) => {
 
 const handleStartBtn = () => {
     currentTasks = shuffleArray(currentLesson.tasks)
-    taskScreenView.render()
+    taskScreenView.render(currentTasks.length)
     console.log(currentTasks)
-    taskScreenView.renderTask(currentTasks[currentTask])
+    taskScreenView.renderTask(currentTasks[currentTask], currentTask)
 }
 
 const handleCheckBtn = (answer) => {
@@ -57,7 +57,7 @@ const handleNextBtn = () => {
         return
     } else {
         checkDialogView.toggleDialog(false)
-        taskScreenView.renderTask(currentTasks[currentTask])
+        taskScreenView.renderTask(currentTasks[currentTask], currentTask)
     }
 }
 

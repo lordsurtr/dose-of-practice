@@ -210,3 +210,30 @@ button {
 .check-btn {
   margin-top: 20px;
 }
+
+.progress-bar-container {
+  height: 50px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-dim-color);
+  overflow: hidden;
+}
+
+
+.progress-bar {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  background-color: var(--secondary-dim-color);
+}
+
+.progress-bar-text {
+  color: var(--accent-color);
+  font-size: var(--regular-text-size);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
