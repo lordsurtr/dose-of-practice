@@ -238,7 +238,11 @@ button {
 }
 
 .progress-bar-text {
-  color: var(--accent-color);
+  /* color: var(--accent-color); */
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+  border-radius: 999px;
+  padding: 3px 20px;
   font-size: var(--regular-text-size);
   position: absolute;
   top: 50%;
