@@ -310,3 +310,12 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.audio-play-btn{
+  margin-top: 100px;
+  background-color: transparent;
+}
+
+.audio-play-btn img {
+  height: 80px;
+}

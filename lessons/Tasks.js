@@ -23,8 +23,8 @@ export class WriteTask extends Task {
 }
 
 export class ListenTask extends Task {
-    constructor(type, word, audioLink, correctAnswers) {
+    constructor(type, word, text, correctAnswers) {
         super(type, word, correctAnswers)
-        this.audioLink = audioLink
+        this.text = text
     }
 }
