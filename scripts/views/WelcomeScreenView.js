@@ -19,7 +19,7 @@ class WelcomeScreenView {
         this.includeListeningExercisesSwitchView = new SwitchView('вправи з аудіо', true)
         this.screen.appendChild(this.includeListeningExercisesSwitchView.get())
 
-        this.startBtn = createElement('button', ['action-button', 'welcome-start-button', 'action-button--active'], 'почнімо')
+        this.startBtn = createElement('button', ['action-button', 'welcome-start-button', 'action-button--active', 'action-button--available'], 'почнімо')
         this.screen.appendChild(this.startBtn)
 
     }

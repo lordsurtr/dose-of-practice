@@ -20,7 +20,7 @@ let answerLog = []
 let currentTasks = []
 
 const isCorrect = (userAnswer, task) => {
-    if(task.correctAnswers.includes(userAnswer.toLowerCase())) {
+    if(task.correctAnswers.includes(userAnswer.toLowerCase().trim())) {
         return true
     } else {
         return false

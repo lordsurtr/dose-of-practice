@@ -30,6 +30,8 @@ class TaskScreenView {
     }
 
     renderTask(task, taskNumber) {
+        this.checkBtn.classList.remove('action-button--active')
+        this.checkBtn.classList.remove('action-button--available')
         this.userAnswer = ''
         clearContainer(this.taskContainer)
         this.progressBar.updateProgress(taskNumber)
@@ -40,6 +42,7 @@ class TaskScreenView {
                 matchTaskView.bindAnswer((answer) => {
                     this.userAnswer = answer
                     this.checkBtn.classList.add('action-button--active')
+                    this.checkBtn.classList.add('action-button--available')
                 })
                 break
             }
@@ -48,6 +51,8 @@ class TaskScreenView {
                 writeTaskView.render(task)
                 writeTaskView.bindAnswer((answer) => {
                     this.userAnswer = answer
+                    this.checkBtn.classList.add('action-button--active')
+                    this.checkBtn.classList.add('action-button--available')
                 })
             }
         }

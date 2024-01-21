@@ -76,10 +76,15 @@ button {
     background-color: var(--secondary-dim-color);
     font-size: var(--regular-text-size);
     font-weight: bold;
+  pointer-events: none;
 }
 
 .action-button--active {
-    background-color: var(--accent-color);
+  pointer-events: all;
+}
+
+.action-button--available {
+  background-color: var(--accent-color);
 }
 
 .action-button--correct {
@@ -206,6 +211,7 @@ button {
   color: var(--secondary-color);
   font-size: var(--header-text-size);
   font-weight:normal;
+  margin-top: 20px;
 }
 
 .question-highlight {
@@ -256,6 +262,22 @@ button {
 
 .check-btn {
   margin-top: 20px;
+}
+
+.write-task-field {
+  flex-grow: 1;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 2px solid var(--secondary-dim-color);
+  margin-top: 100px;
+  padding: 15px;
+  font-size: var(--regular-text-size);
+  color: var(--secondary-color);
+  outline: none;
+}
+
+.write-task-field::placeholder {
+  color: var(--secondary-dim-color);
 }
 
 .progress-bar-container {

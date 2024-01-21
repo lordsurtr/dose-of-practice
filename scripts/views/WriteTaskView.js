@@ -4,16 +4,17 @@ import { createElement } from "./ViewHelpers.js"
 class WriteTaskView {
     constructor(container) {
 
-        this.question = createElement('h1')
+        this.question = createElement('h1', ['task-question'])
         container.appendChild(this.question)
 
-        this.textBox = createElement('textarea')
+        this.textBox = createElement('textarea', ['write-task-field'])
+        this.textBox.setAttribute('placeholder', 'пиши тут...')
         container.appendChild(this.textBox)
 
     }
 
     render(task) {
-        this.question.textContent = `Як перекласти ${task.questionWord}?`
+        this.question.innerHTML = `Як сказати <span class="question-highlight">${task.questionWord}</span> англійською?`
     }
 
     bindAnswer(handler) {

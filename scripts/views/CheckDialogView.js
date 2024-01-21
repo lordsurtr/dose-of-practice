@@ -15,7 +15,7 @@ class CheckDialogView {
         this.answerElem = createElement('p', ['check-dialog-answer'])
         this.dialog.appendChild(this.answerElem)
         
-        this.btn = createElement('button', ['action-button', 'check-dialog-btn'], 'next')
+        this.btn = createElement('button', ['action-button', 'check-dialog-btn', 'action-button--active'], 'next')
         this.dialog.appendChild(this.btn)
     }
 
