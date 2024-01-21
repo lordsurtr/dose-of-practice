@@ -5,7 +5,7 @@ import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { shuffleArray, shuffleArrayByDifficulty } from './Helpers.js'
+import { shuffleArray, shuffleTasksByDifficulty } from './Helpers.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -30,7 +30,7 @@ const isCorrect = (userAnswer, task) => {
 const handleStartBtn = () => {
     // currentTasks = shuffleArray(currentLesson.tasks)
 
-    currentTasks = shuffleArrayByDifficulty(currentLesson.tasks)
+    currentTasks = shuffleTasksByDifficulty(currentLesson.tasks)
     taskScreenView.render(currentTasks.length)
     console.log(currentTasks)
     taskScreenView.renderTask(currentTasks[currentTask], currentTask)

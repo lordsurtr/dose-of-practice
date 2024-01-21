@@ -4,15 +4,14 @@ export const shuffleArray = (array) => {
     return Array.from(array).sort(() => Math.random() - 0.5)
 }
 
-export const shuffleArrayByDifficulty = (array) => {
-  let matchTasks = array.filter(task => task.type == 'match')
-  matchTasks = shuffleArray(matchTasks)
+export const shuffleTasksByDifficulty = (array) => {
 
-  let writeTasks = array.filter(task => task.type == 'write')
-  writeTasks = shuffleArray(writeTasks)
+  const sortOrder = ['match', 'write', 'listen']
+  let shuffledTasks = []
+  sortOrder.forEach(order => {
+    let currentArray = shuffleArray(array.filter(task => task.type == order))
+    shuffledTasks = shuffledTasks.concat(currentArray);
+  })
 
-  let listenTasks = array.filter(task => task.type == 'listen')
-  listenTasks = shuffleArray(listenTasks)
-
-  return matchTasks.concat(writeTasks.concat(listenTasks));
+  return shuffledTasks
 }
