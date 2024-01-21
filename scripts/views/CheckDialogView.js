@@ -6,21 +6,28 @@ class CheckDialogView {
         this.dialogContainer = createElement('div', ['dialog-container'])
         document.body.appendChild(this.dialogContainer)
 
-        this.dialog = createElement('div', ['dialog'])
+        this.dialog = createElement('div', ['dialog', 'check-dialog'])
         this.dialogContainer.appendChild(this.dialog)
 
-        this.header = createElement('h1')
+        this.header = createElement('h1', ['check-dialog-header'])
         this.dialog.appendChild(this.header)
 
-        this.answerElem = createElement('p')
+        this.answerElem = createElement('p', ['check-dialog-answer'])
         this.dialog.appendChild(this.answerElem)
         
-        this.btn = createElement('button', [], 'next')
+        this.btn = createElement('button', ['action-button', 'check-dialog-btn'], 'next')
         this.dialog.appendChild(this.btn)
     }
 
     setDialog(isCorrect, answer) {
         this.header.textContent = isCorrect ? 'Правильно!' : 'Неправильно :('
+        if(isCorrect) {
+          this.dialog.classList.remove('check-dialog--wrong')
+          this.dialog.classList.add('check-dialog--correct')
+        } else {
+          this.dialog.classList.remove('check-dialog--correct')  
+          this.dialog.classList.add('check-dialog--wrong')
+        }
         this.answerElem.textContent = answer
     }
 
