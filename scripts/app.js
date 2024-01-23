@@ -89,7 +89,7 @@ const handleIncludeListeningExercisesSwitchToggle = (on) => {
 
 
 const start = async () => {
-  const lesson = await lessonModel.getLesson('2')
+  const lesson = await lessonModel.getLesson('1')
   currentLesson = lesson
 
   const words = lessonModel.getWordsFromLesson(lesson)

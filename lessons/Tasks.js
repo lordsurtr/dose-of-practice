@@ -13,7 +13,7 @@ export class Task {
         return `${this.text} - ${this.translation}`
       }
       default: {
-        return `${this.word} - ${this.correctAnswers[0]}`
+        return `${this.questionWord} - ${this.correctAnswers[0]}`
       }
     }
   }
