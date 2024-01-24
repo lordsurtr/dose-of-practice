@@ -52,3 +52,12 @@ export class FillTask extends Task {
     this.text = text
   }
 }
+
+export class FillMatchTask extends Task {
+  constructor(word, text, options, correctAnswers, checkText) {
+    super(word, correctAnswers, checkText)
+    this.type = 'fill-match'
+    this.options = options
+    this.text = text
+  }
+}

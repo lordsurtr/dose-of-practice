@@ -5,6 +5,7 @@ import WriteTaskView from "./WriteTaskView.js"
 import ProgressBarView from "./ProgressBarView.js"
 import ListenTaskView from "./ListenTaskView.js"
 import FillTaskView from "./FillTaskView.js"
+import FillMatchTaskView from "./FillMatchTaskView.js"
 
 class TaskScreenView {
   constructor() {
@@ -72,6 +73,16 @@ class TaskScreenView {
         const fillTaskView = new FillTaskView(this.taskContainer)
         fillTaskView.render(task)
         fillTaskView.bindAnswer(answer => {
+          this.userAnswer = answer
+          this.checkBtn.classList.add('action-button--active')
+          this.checkBtn.classList.add('action-button--available')
+        })
+        break
+      }
+      case 'fill-match': {
+        const fillMatchTaskView = new FillMatchTaskView(this.taskContainer)
+        fillMatchTaskView.render(task)
+        fillMatchTaskView.bindAnswer(answer => {
           this.userAnswer = answer
           this.checkBtn.classList.add('action-button--active')
           this.checkBtn.classList.add('action-button--available')

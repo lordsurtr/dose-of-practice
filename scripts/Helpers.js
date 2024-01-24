@@ -6,7 +6,7 @@ export const shuffleArray = (array) => {
 
 export const shuffleTasksByDifficulty = (array) => {
 
-  const sortOrder = ['match', 'write', 'listen', 'fill']
+  const sortOrder = ['match', 'write', 'listen', 'fill-match', 'fill']
   let shuffledTasks = []
   sortOrder.forEach(order => {
     let currentArray = shuffleArray(array.filter(task => task.type == order))
