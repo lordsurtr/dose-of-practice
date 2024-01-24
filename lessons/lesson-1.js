@@ -1,36 +1,31 @@
 
 import Lesson from "./Lesson.js";
-import {MatchTask, WriteTask, ListenTask} from "./Tasks.js"
+import {MatchTask, WriteTask, ListenTask, FillTask} from "./Tasks.js"
 
 const lesson = new Lesson('Lesson 3', [
   new MatchTask(
-    'match',
     'to flunk',
     'to flunk',
     ['завалити (екзамен)', 'потонути', 'знищити'],
     ['завалити (екзамен)']
   ),
   new MatchTask(
-    'match',
     'wall',
     'wall',
     ['стіна', 'кімната', 'стіл'],
     ['стіна']
   ),
   new WriteTask(
-    'write',
     'to flunk',
     'завалити (екзамен)',
     ['to flunk', 'flunk']
   ),
   new WriteTask(
-    'write',
     'table',
     'стіл',
     ['table', 'the table', 'a table']
   ),
   new ListenTask(
-    'listen',
     'to flunk',
     'How could he flunk me?',
     'Як він міг мене завалити?',
@@ -38,12 +33,23 @@ const lesson = new Lesson('Lesson 3', [
     'Хииии лох)))',
   ),
   new ListenTask(
-    'listen',
     'laptop',
     'I need a new laptop.',
     'Мені потрібен новий ноутбук',
     ['i need a new laptop', 'i need a new laptop!', 'i need a new laptop.']
   ),
+  new FillTask(
+    'to open',
+    'Can you ___ the window?',
+    ['open'],
+    'Can you open the window? - Можеш відчинити вікно?'
+  ),
+  new FillTask(
+    'to drive',
+    'You shouldn\'t ____ a car when you\'re drunk',
+    ['drive'],
+    'You shouldn\'t drive a car when you\'re drunk - Тобі не варто водити машину коли ти п\'яний'
+  )
 ])
 
 export default lesson

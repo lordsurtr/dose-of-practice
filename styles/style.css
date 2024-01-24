@@ -217,7 +217,6 @@ button {
 .question-highlight {
   color: var(--accent-color);
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .option-container {
