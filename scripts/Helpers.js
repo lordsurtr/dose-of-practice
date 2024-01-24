@@ -15,3 +15,7 @@ export const shuffleTasksByDifficulty = (array) => {
 
   return shuffledTasks
 }
+
+export const filterTasks = (tasks, filteredType) => {
+  return tasks.filter(task => task.type != filteredType)
+}

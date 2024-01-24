@@ -5,7 +5,7 @@ import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { shuffleArray, shuffleTasksByDifficulty } from './Helpers.js'
+import { filterTasks, shuffleArray, shuffleTasksByDifficulty } from './Helpers.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -18,6 +18,7 @@ let currentLesson
 let currentTask = 0
 let answerLog = []
 let currentTasks = []
+let includeListeningExercises = true
 
 const isCorrect = (userAnswer, task) => {
   if(task.correctAnswers.includes(userAnswer.toLowerCase().trim())) {
@@ -31,6 +32,9 @@ const handleStartBtn = () => {
   // currentTasks = shuffleArray(currentLesson.tasks)
 
   currentTasks = shuffleTasksByDifficulty(currentLesson.tasks)
+  if(!includeListeningExercises) {
+    currentTasks = filterTasks(currentTasks, 'listen')
+  }
   taskScreenView.render(currentTasks.length)
   console.log(currentTasks)
   taskScreenView.renderTask(currentTasks[currentTask], currentTask)
@@ -84,7 +88,7 @@ const handleAgainBtn = () => {
 }
 
 const handleIncludeListeningExercisesSwitchToggle = (on) => {
-  console.log(on)
+  includeListeningExercises = on
 }
 
 
