@@ -19,3 +19,7 @@ export const shuffleTasksByDifficulty = (array) => {
 export const filterTasks = (tasks, filteredType) => {
   return tasks.filter(task => task.type != filteredType)
 }
+
+export const getPercentage = (part, total) => {
+  return (part * 100) / total
+}

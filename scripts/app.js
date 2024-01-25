@@ -63,7 +63,10 @@ const handleCheckBtn = (answer) => {
 const handleNextBtn = () => {
   currentTask += 1
   if(currentTask >= currentTasks.length) {
-    resultScreenView.render()
+    resultScreenView.render(
+      answerLog.filter(log => log.correct).length,
+      currentTasks.length
+    )
     checkDialogView.toggleDialog(false)
     return
   } else {
