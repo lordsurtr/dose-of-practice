@@ -45,16 +45,16 @@ class ResultScreenView {
 
     if(percentageOfCorrectAnswers == 100) {
       this.header.textContent = 'Ідеально!'
-      this.icon.setAttribute('src', '/assets/star-icon.svg')
+      this.icon.setAttribute('src', './assets/star-icon.svg')
     } else if (percentageOfCorrectAnswers >= 90) {
       this.header.textContent = 'Чудово!'
-      this.icon.setAttribute('src', '/assets/Fire-icon.svg')
+      this.icon.setAttribute('src', './assets/Fire-icon.svg')
     } else if (percentageOfCorrectAnswers >= 50) {
       this.header.textContent = 'Не погано'
-      this.icon.setAttribute('src', '/assets/Heard-icon.svg')
+      this.icon.setAttribute('src', './assets/Heard-icon.svg')
     } else {
       this.header.textContent = 'Є над чим працювати'
-      this.icon.setAttribute('src', '/assets/pen-icon.svg')
+      this.icon.setAttribute('src', './assets/pen-icon.svg')
     }
 
     this.app.appendChild(this.screen)
