@@ -8,7 +8,7 @@
 
     --big-text-size: 50px;
     --header-text-size: 30px;
-    --regular-text-size: 20px;
+    --regular-text-size: 22px;
     --small-text-size: 15px;
 }
 
@@ -273,6 +273,7 @@ button {
   font-size: var(--regular-text-size);
   color: var(--secondary-color);
   outline: none;
+  font-family: sans-serif;
 }
 
 .write-task-field::placeholder {
