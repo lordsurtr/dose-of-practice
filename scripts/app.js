@@ -5,7 +5,7 @@ import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { filterTasks, shuffleArray, shuffleTasksByDifficulty } from './Helpers.js'
+import { filterTasks, shuffleTasksByDifficulty } from './Helpers.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -46,7 +46,9 @@ const handleCheckBtn = (answer) => {
 
   answerLog.push({
     type: thisTask.type,
-    correctAnswer: `${thisTask.word} - ${thisTask.correctAnswers[0]}`,
+    auxilaryInfo: thisTask.getAnswerView().auxilary,
+    correctAnswer: thisTask.getAnswerView().answer,
+    // correctAnswer: `${thisTask.checkText ? thisTask.checkText : thisTask.getAutoCheckText()}`,
     userAnswer: answer,
     correct: isAnswerCorrect,
   })

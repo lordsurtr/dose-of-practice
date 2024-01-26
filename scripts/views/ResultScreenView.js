@@ -51,7 +51,7 @@ class ResultScreenView {
       this.icon.setAttribute('src', './assets/Fire-icon.svg')
     } else if (percentageOfCorrectAnswers >= 50) {
       this.header.textContent = 'Не погано'
-      this.icon.setAttribute('src', './assets/Heard-icon.svg')
+      this.icon.setAttribute('src', './assets/Heart-icon.svg')
     } else {
       this.header.textContent = 'Є над чим працювати'
       this.icon.setAttribute('src', './assets/pen-icon.svg')

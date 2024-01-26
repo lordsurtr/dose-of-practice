@@ -17,6 +17,24 @@ export class Task {
       }
     }
   }
+
+  getAnswerView() {
+    switch(this.type) {
+      case 'listen': {}
+      case 'fill': {}
+      case 'fill-match': {
+        return {
+          auxilary: this.text,
+          answer: this.correctAnswers[0]
+        }
+      }
+      default: {
+        return {
+          answer: `${this.correctAnswers[0]}`
+        }
+      }
+    }
+  }
 }
 
 export class MatchTask extends Task{
