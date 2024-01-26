@@ -1,81 +1,81 @@
 :root {
-    --background-color: #222831;
-    --secondary-color: #5E6E85;
-    --secondary-dim-color: #414D5E;
-    --accent-color: #FFD369;
-    --correct-color: #57EBC7;
-    --wrong-color: #EB5783;
+  --background-color: #222831;
+  --secondary-color: #5E6E85;
+  --secondary-dim-color: #414D5E;
+  --accent-color: #FFD369;
+  --correct-color: #57EBC7;
+  --wrong-color: #EB5783;
 
-    --big-text-size: 50px;
-    --header-text-size: 30px;
-    --regular-text-size: 22px;
-    --small-text-size: 15px;
+  --big-text-size: 50px;
+  --header-text-size: 30px;
+  --regular-text-size: 22px;
+  --small-text-size: 15px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 button {
-    border: none;
+  border: none;
 }
 
 .app {
-    height: 100dvh;
-    width: 100%;
-    background-color: var(--background-color);
-    padding: 15px;
+  height: 100dvh;
+  width: 100%;
+  background-color: var(--background-color);
+  padding: 15px;
 }
 
 .screen {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .welcome-header {
-    color: var(--secondary-color);
-    font-size: var(--header-text-size);
-    margin-bottom: 30px;
+  color: var(--secondary-color);
+  font-size: var(--header-text-size);
+  margin-bottom: 30px;
 }
 
 .small-text {
-    color: var(--secondary-color);
-    font-size: var(--small-text-size);
-    margin-bottom: 15px;
+  color: var(--secondary-color);
+  font-size: var(--small-text-size);
+  margin-bottom: 15px;
 }
 
 .word-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 8px;
-    margin-bottom: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: auto;
 }
 
 .word {
-    padding: 8px 15px;
-    border-radius: 999px;
-    font-size: var(--regular-text-size);
-    background-color: transparent;
-    color: var(--secondary-color);
-    border: 2px solid var(--secondary-color);
+  padding: 8px 15px;
+  border-radius: 999px;
+  font-size: var(--regular-text-size);
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
 } 
 
 .action-button {
-    width: 100%;
-    padding: 20px 0px;
-    border-radius: 10px;
-    color: var(--background-color);
-    background-color: var(--secondary-dim-color);
-    font-size: var(--regular-text-size);
-    font-weight: bold;
+  width: 100%;
+  padding: 20px 0px;
+  border-radius: 10px;
+  color: var(--background-color);
+  background-color: var(--secondary-dim-color);
+  font-size: var(--regular-text-size);
+  font-weight: bold;
   pointer-events: none;
 }
 
@@ -92,70 +92,70 @@ button {
 }
 
 .switch-container {
-    width: 100%;
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .switch {
-    height: 30px;
-    width: 60px;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+  height: 30px;
+  width: 60px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .switch .slider {
-    position: absolute;
-    border: 2px solid var(--secondary-color);
-    height: 100%;
-    width: 100%;
-    border-radius: 999px;
+  position: absolute;
+  border: 2px solid var(--secondary-color);
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
 }
 
 .switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 80%;
-    width: 40%;
-    top: 10%;
-    left: 5%;
-    background-color: var(--secondary-color);
-    border-radius: 999px;
+  position: absolute;
+  content: "";
+  height: 80%;
+  width: 40%;
+  top: 10%;
+  left: 5%;
+  background-color: var(--secondary-color);
+  border-radius: 999px;
 
-    transition: all .2s;
+  transition: all .2s;
 }
 
 .switch input:checked + .slider:before {
-    transform: translateX(120%);
-    background-color: var(--background-color);
+  transform: translateX(120%);
+  background-color: var(--background-color);
 }
 
 .switch input:checked + .slider {
-    background-color: var(--accent-color);
-    border: 2px solid #00000000;
+  background-color: var(--accent-color);
+  border: 2px solid #00000000;
 }
 
 .switch-text {
-    color: var(--secondary-color);
-    font-size: var(--regular-text-size);
+  color: var(--secondary-color);
+  font-size: var(--regular-text-size);
 }
 
 
 .dialog-container {
-    position: absolute;
-    display: none;
-    inset: 0;
-    background-color: #0000006f;
-    width: 100%;
-    height: 100dvh;
+  position: absolute;
+  display: none;
+  inset: 0;
+  background-color: #0000006f;
+  width: 100%;
+  height: 100dvh;
 }
 
 .dialog {
@@ -164,7 +164,7 @@ button {
 }
 
 .dialog--active {
-      display: block;
+  display: block;
 }
 
 .check-dialog {
@@ -320,6 +320,22 @@ button {
   height: 80px;
 }
 
+.play-icon--playing {
+  animation: pulse 0.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0% {
+  transform: scale(1);
+}
+50% {
+  transform: scale(1.2);
+}
+100% {
+  transform: scale(1);
+}
+}
+
 
 .result-screen {
   display: flex;
@@ -353,7 +369,7 @@ button {
 }
 
 .view-answers-button {
-  
+
 }
 
 .again-button {

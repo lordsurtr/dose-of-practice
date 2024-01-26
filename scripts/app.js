@@ -23,7 +23,7 @@ let includeListeningExercises = true
 const isCorrect = (userAnswer, task) => {
   let cleanAnswer = removePunctuation(userAnswer.toLowerCase().trim())
   let correct = false
-  let maxMistakes = task.type.includes('match') ? 0 : 2
+  let maxMistakes = task.type.includes('match') ? 0 : 1
 
   task.correctAnswers.forEach(ans => {
     console.log(calculateSpellingDistance(ans, cleanAnswer))
