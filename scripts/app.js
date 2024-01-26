@@ -5,7 +5,7 @@ import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { filterTasks, shuffleTasksByDifficulty } from './Helpers.js'
+import { filterTasks, removePunctuation, shuffleTasksByDifficulty } from './Helpers.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -21,7 +21,7 @@ let currentTasks = []
 let includeListeningExercises = true
 
 const isCorrect = (userAnswer, task) => {
-  if(task.correctAnswers.includes(userAnswer.toLowerCase().trim())) {
+  if(task.correctAnswers.includes(removePunctuation(userAnswer.toLowerCase().trim()))) {
     return true
   } else {
     return false
@@ -98,7 +98,7 @@ const handleIncludeListeningExercisesSwitchToggle = (on) => {
 
 
 const start = async () => {
-  const lesson = await lessonModel.getLesson('the-prestige')
+  const lesson = await lessonModel.getLesson('2')
   currentLesson = lesson
 
   const words = lessonModel.getWordsFromLesson(lesson)

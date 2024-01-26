@@ -23,3 +23,16 @@ export const filterTasks = (tasks, filteredType) => {
 export const getPercentage = (part, total) => {
   return (part * 100) / total
 }
+
+export const removePunctuation = (text) => {
+  const specialChars = '.,!?:#$%&^*()[]{}-=+></\\\'\"'.split('')
+  let newText = ''
+  for(let i = 0; i < text.length; i++) {
+    if(!specialChars.includes(text[i])) {
+      newText += text[i]
+    }
+  }
+  console.log(text)
+  console.log(newText)
+  return newText
+}
