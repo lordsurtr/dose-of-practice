@@ -32,7 +32,35 @@ export const removePunctuation = (text) => {
       newText += text[i]
     }
   }
-  console.log(text)
-  console.log(newText)
   return newText
+}
+
+
+export const calculateSpellingDistance = (str1, str2) => {
+  let distances = []
+
+  for (var i = 0; i <= str1.length; ++i) { 
+    distances[i]    = [ i ] 
+  }
+
+  for (var i = 0; i <= str2.length; ++i) { 
+    distances[0][i] =   i
+  }
+
+  for (var j = 1; j <= str2.length; ++j) {
+    for (var i = 1; i <= str1.length; ++i) {
+
+      if(str1[i-1] == str2[j - 1]) {
+        distances[i][j] = distances[i-1][j-1]
+      } else {
+        distances[i][j] = Math.min.apply(Math, [
+          distances[i-1][j] + 1,
+          distances[i][j-1] + 1,
+          distances[i-1][j-1]+1
+        ])
+      }
+    }
+  }
+
+  return distances[str1.length][str2.length]
 }
