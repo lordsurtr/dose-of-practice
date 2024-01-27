@@ -5,7 +5,7 @@ import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty } from './Helpers.js'
+import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces} from './Helpers.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -21,7 +21,7 @@ let currentTasks = []
 let includeListeningExercises = true
 
 const isCorrect = (userAnswer, task) => {
-  let cleanAnswer = removePunctuation(userAnswer.toLowerCase().trim())
+  let cleanAnswer = removeDoubleSpaces(removePunctuation(userAnswer.toLowerCase().trim()))
   let correct = 'incorrect'
   let maxMistakes = task.type.includes('match') ? 0 : 1
 

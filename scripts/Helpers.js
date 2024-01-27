@@ -64,3 +64,15 @@ export const calculateSpellingDistance = (str1, str2) => {
 
   return distances[str1.length][str2.length]
 }
+
+export const removeDoubleSpaces = (text) => {
+  let output = ''
+  for(let i = 0; i < text.length; i++) {
+    if(!(text[i] == ' ' && text[i + 1] == ' ')) {
+      output += text[i]
+    }
+  }
+  console.log(text)
+  console.log(output)
+  return output
+}
