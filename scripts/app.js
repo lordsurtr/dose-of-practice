@@ -22,13 +22,16 @@ let includeListeningExercises = true
 
 const isCorrect = (userAnswer, task) => {
   let cleanAnswer = removePunctuation(userAnswer.toLowerCase().trim())
-  let correct = false
+  let correct = 'incorrect'
   let maxMistakes = task.type.includes('match') ? 0 : 1
 
   task.correctAnswers.forEach(ans => {
-    console.log(calculateSpellingDistance(ans, cleanAnswer))
-    if(calculateSpellingDistance(ans, cleanAnswer) <= maxMistakes) {
-      correct = true
+    let spellingDistance = calculateSpellingDistance(ans, cleanAnswer)
+    if(spellingDistance  == 0) {
+      correct = 'correct'
+      return
+    } else if (spellingDistance <= maxMistakes) {
+      correct = 'almost'
       return
     }
   })

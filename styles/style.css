@@ -281,34 +281,45 @@ button {
 }
 
 .progress-bar-container {
+  display: flex;
+  align-items: center;
   height: 50px;
   width: 100%;
   position: relative;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  border: 2px solid var(--secondary-dim-color);
-  overflow: hidden;
 }
 
-
 .progress-bar {
-  position: absolute;
+  position: relative;
+  flex-grow: 1;
   height: 100%;
+}
+
+.progress-bar-line {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--secondary-dim-color);
+  border-radius: 999px;
+}
+
+.progress-bar-progress {
+  position: absolute;
   width: 30%;
-  background-color: var(--secondary-dim-color);
+  height: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent-color);
+  border-radius: 999px;
+  
+  transition: width .5s;
 }
 
 .progress-bar-text {
-  /* color: var(--accent-color); */
   color: var(--secondary-color);
-  background-color: var(--background-color);
-  border-radius: 999px;
-  padding: 3px 20px;
+  padding: 0 10px;
   font-size: var(--regular-text-size);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .audio-play-btn{
