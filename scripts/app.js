@@ -76,7 +76,7 @@ const handleNextBtn = () => {
   currentTask += 1
   if(currentTask >= currentTasks.length) {
     resultScreenView.render(
-      answerLog.filter(log => log.correct).length,
+      answerLog.filter(log => log.correct == 'correct' || log.correct == 'almost').length,
       currentTasks.length
     )
     checkDialogView.toggleDialog(false)

@@ -22,15 +22,21 @@ class CheckDialogView {
   }
 
   setDialog(isCorrect, answer) {
-    this.header.textContent = isCorrect ? 'Правильно!' : 'Неправильно :('
-    if(isCorrect) {
+    if(isCorrect == 'correct') {
       this.dialog.classList.remove('check-dialog--wrong')
       this.dialog.classList.add('check-dialog--correct')
       this.player.src = './assets/success.mp3'
-    } else {
+      this.header.textContent = 'Правильно!'
+    } else if (isCorrect == 'incorrect'){
       this.dialog.classList.remove('check-dialog--correct')  
       this.dialog.classList.add('check-dialog--wrong')
       this.player.src = './assets/mistake.mp3'
+      this.header.textContent = 'Неправильно :('
+    } else {
+      this.dialog.classList.remove('check-dialog--wrong')
+      this.dialog.classList.add('check-dialog--correct')
+      this.player.src = './assets/success.mp3'
+      this.header.textContent = 'Майже!'
     }
     this.answerElem.textContent = answer
   }

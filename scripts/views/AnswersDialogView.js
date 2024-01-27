@@ -25,6 +25,13 @@ class AnswersDialogView {
       const answerItem = createElement('div', ['answers-dialog-answer-item'])
 
       const answerType = createElement('p', ['answers-dialog-type'], `#${log.type}`)
+      if(log.correct == 'correct') {
+        answerType.textContent = `Правильно #${log.type}`
+      } else if (log.correct == 'incorrect') {
+        answerType.textContent = `Неправильно #${log.type}`
+      } else {
+        answerType.textContent = `Майже #${log.type}`
+      }
       answerItem.appendChild(answerType)
 
       if(log.auxilaryInfo) {
@@ -38,7 +45,12 @@ class AnswersDialogView {
 
       const userAnswer = createElement('h2', ['answers-dialog-user-answer'])
       userAnswer.innerHTML =  `Твоя відповідь: <span class=\"answers-dialog-highlight">${log.userAnswer}</span>`
-      userAnswer.classList.add(log.correct ? 'answers-dialog-correct-user-answer' : 'answers-dialog-wrong-user-answer')
+      // userAnswer.classList.add(log.correct ? 'answers-dialog-correct-user-answer' : 'answers-dialog-wrong-user-answer')
+      if(log.correct == 'correct' || log.correct == 'almost') {
+        userAnswer.classList.add('answers-dialog-correct-user-answer' )
+      } else {
+        userAnswer.classList.add( 'answers-dialog-wrong-user-answer')
+      }
       answerItem.appendChild(userAnswer)
 
       this.answerContainer.appendChild(answerItem)
