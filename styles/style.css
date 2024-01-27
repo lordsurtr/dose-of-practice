@@ -490,3 +490,16 @@ button {
   font-weight: bold;
   color: var(--accent-color);
 }
+
+
+
+@media (min-width: 1500px) {
+  
+  .screen {
+    padding: 0 30%;
+  }
+
+  .dialog {
+    padding: 20px 30%;
+  }
+}

@@ -38,7 +38,7 @@ class CheckDialogView {
       this.player.src = './assets/success.mp3'
       this.header.textContent = 'Майже!'
     }
-    this.answerElem.textContent = answer
+    this.answerElem.innerHTML = answer
   }
 
   toggleDialog(on) {

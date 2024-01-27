@@ -23,7 +23,8 @@ const lesson = new Lesson('The Prestige', [
   new WriteTask(
     'to seem',
     'здаватися',
-    ['to seem', 'seem']
+    ['to seem', 'seem', 'to give up', 'give up'],
+    'to seem - здаватися (мені здається...)<br>to give up - здаватися (я здаюся...)'
   ),
   new WriteTask(
     'next to',
@@ -35,13 +36,13 @@ const lesson = new Lesson('The Prestige', [
     'to interfere with',
     'Do not interfere with my creative process',
     'Не заважай моєму творчому процесу',
-    ['do not interfere with my creative process.', 'do not interfere with my creative process']
+    ['do not interfere with my creative process']
   ),
   new ListenTask(
     'endeavor',
     'We have to help him in his endeavor',
     'Ми маємо допомогти йому в його зусиллях',
-    ['we have to help him in his endeavor', 'we have to help him in his endeavor.']
+    ['we have to help him in his endeavor']
   ),
   new FillMatchTask(
     'significance',
