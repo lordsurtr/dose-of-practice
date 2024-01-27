@@ -1,9 +1,18 @@
 :root {
-  --background-color: #222831;
-  --secondary-color: #5E6E85;
-  --secondary-dim-color: #414D5E;
-  --accent-color: #FFD369;
-  --correct-color: #57EBC7;
+  /* Old theme (yellow) ------------------ */
+  /* --background-color: #222831; */
+  /* --secondary-color: #5E6E85; */
+  /* --secondary-dim-color: #414D5E; */
+  /* --accent-color: #FFD369; */
+  /* --correct-color: #57EBC7; */
+  /* --wrong-color: #EB5783; */
+
+  /* New theme (purple) -----------------  */
+  --background-color: #121212;
+  --secondary-color: #7A7A7A;
+  --secondary-dim-color: #323232;
+  --accent-color: #A586FC;
+  --correct-color: #6DFFA8;
   --wrong-color: #EB5783;
 
   --big-text-size: 50px;
@@ -39,6 +48,9 @@ button {
   flex-direction: column;
 }
 
+
+/* WELCOME SCREEN ----------------  */
+
 .welcome-header {
   color: var(--secondary-color);
   font-size: var(--header-text-size);
@@ -68,6 +80,8 @@ button {
   border: 2px solid var(--secondary-color);
 } 
 
+/* BUTTONS -----------------------  */
+
 .action-button {
   width: 100%;
   padding: 20px 0px;
@@ -77,6 +91,7 @@ button {
   font-size: var(--regular-text-size);
   font-weight: bold;
   pointer-events: none;
+  margin-top: 15px;
   transform: scale(1);
 
   transition: transform .5s;
@@ -97,6 +112,9 @@ button {
 .action-button--correct {
   background-color: var(--correct-color);
 }
+
+
+/* SWITCH ----------------------  */
 
 .switch-container {
   width: 100%;
@@ -156,6 +174,8 @@ button {
 }
 
 
+/* DIALOGS -------------------  */
+
 .dialog-container {
   position: absolute;
   display: none;
@@ -173,6 +193,9 @@ button {
 .dialog--active {
   display: block;
 }
+
+
+/* CHECK DIALOG --------------  */
 
 .check-dialog {
   bottom: 0px;
@@ -208,6 +231,8 @@ button {
   font-size: var(--regular-text-size);
 }
 
+/* TASK SCREEN --------------  */
+
 .task-container {
   height: 100%;
   display: flex;
@@ -225,6 +250,9 @@ button {
   color: var(--accent-color);
   font-weight: bold;
 }
+
+
+/* MATCH TASK -------------------   */
 
 .option-container {
   display: flex;
@@ -266,9 +294,8 @@ button {
   border: 2px solid var(--secondary-color);
 }
 
-.check-btn {
-  margin-top: 20px;
-}
+
+/* WRITE TASK SCREEN -----------------   */
 
 .write-task-field {
   flex-grow: 1;
@@ -286,6 +313,9 @@ button {
 .write-task-field::placeholder {
   color: var(--secondary-dim-color);
 }
+
+
+/* PROGRESS BAR -------------------------  */
 
 .progress-bar-container {
   display: flex;
@@ -325,9 +355,11 @@ button {
 
 .progress-bar-text {
   color: var(--secondary-color);
-  padding: 0 10px;
+  padding-right: 10px;
   font-size: var(--regular-text-size);
 }
+
+/* AUDIO SCREEN --------------------  */
 
 .audio-play-btn{
   margin-top: 100px;
@@ -354,6 +386,7 @@ button {
 }
 }
 
+/* RESULT SCREEN ------------------------------ */
 
 .result-screen {
   display: flex;
@@ -386,15 +419,12 @@ button {
   font-weight: bold;
 }
 
-.view-answers-button {
-
-}
-
-.again-button {
-  margin-top: 15px;
-}
+/* .again-button { */
+/*   margin-top: 15px; */
+/* } */
 
 
+/* ANSWERS DIALOG ----------------------- */
 
 .answers-dialog {
   background: var(--background-color);
