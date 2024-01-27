@@ -102,6 +102,7 @@ button {
 }
 
 .action-button--active {
+  cursor: pointer;
   pointer-events: all;
 }
 
@@ -368,6 +369,7 @@ button {
 
 .audio-play-btn img {
   height: 80px;
+  cursor: pointer;
 }
 
 .play-icon--playing {
