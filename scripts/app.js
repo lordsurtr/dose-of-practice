@@ -4,7 +4,7 @@ import WelcomeScreenView from './views/WelcomeScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces, shuffleArray} from './Helpers.js'
+import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces, shuffleArray, getTasksOfDifficulty} from './Helpers.js'
 import TaskScreenView from './views/TaskScreenView.js'
 
 const lessonModel = new LessonModel()
@@ -19,6 +19,7 @@ let currentTask = 0
 let answerLog = []
 let currentTasks = []
 let includeListeningExercises = true
+let difficulty = 'medium'
 
 const isCorrect = (userAnswer, task) => {
   let cleanAnswer = removeDoubleSpaces(removePunctuation(userAnswer.toLowerCase().trim()))
@@ -41,8 +42,8 @@ const isCorrect = (userAnswer, task) => {
 
 const handleStartBtn = () => {
 
-  // currentTasks = shuffleTasksByDifficulty(currentLesson.tasks)
-  currentTasks = shuffleArray(currentLesson.tasks)
+  currentTasks = shuffleArray(getTasksOfDifficulty(difficulty, currentLesson.tasks))
+
   if(!includeListeningExercises) {
     currentTasks = filterTasks(currentTasks, 'listen')
   }
@@ -118,7 +119,7 @@ const start = async () => {
   welcomeScreenView.bindStartBtn(handleStartBtn)
   // welcomeScreenView.bindIncludeListeningExercisesSwitchToggle(handleIncludeListeningExercisesSwitchToggle)
   welcomeScreenView.bindDifficultyModeSwitchButtons(mode => {
-    console.log(mode)
+    difficulty = mode
   })
 
   taskScreenView.bindCheckBtn(handleCheckBtn)

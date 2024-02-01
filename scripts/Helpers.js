@@ -4,6 +4,18 @@ export const shuffleArray = (array) => {
     return Array.from(array).sort(() => Math.random() - 0.5)
 }
 
+export const getTasksOfDifficulty = (difficulty, tasks) => {
+  if(difficulty == 'easy') {
+    return tasks.filter(task => task.type == 'translate-match' || task.type == 'fill-match')
+  } else if (difficulty == 'medium') {
+    return tasks.filter(task => task.type == 'translate-write' || task.type == 'correct-match')
+  } else if (difficulty == 'hard') {
+    return tasks.filter(task => task.type == 'fill-write' || task.type == 'sentence-assemble')
+  } else {
+    throw new Error('UNKNOWN DIFFICULTY')
+  }
+}
+
 export const shuffleTasksByDifficulty = (array) => {
 
   const sortOrder = ['match', 'write', 'listen', 'fill-match', 'fill', 'is-correct']
