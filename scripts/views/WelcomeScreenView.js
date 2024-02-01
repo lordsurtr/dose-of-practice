@@ -16,12 +16,57 @@ class WelcomeScreenView {
         this.wordContainer = createElement('div', ['word-container'])
         this.screen.appendChild(this.wordContainer)
 
-        this.includeListeningExercisesSwitchView = new SwitchView('вправи з аудіо', true)
-        this.screen.appendChild(this.includeListeningExercisesSwitchView.get())
+        // this.includeListeningExercisesSwitchView = new SwitchView('вправи з аудіо', true)
+        // this.screen.appendChild(this.includeListeningExercisesSwitchView.get())
+
+        this.difficultyText = createElement('p', ['small-text'], 'складність:')
+        this.screen.appendChild(this.difficultyText)
+
+        this.easySwitchView = new SwitchView('легко', false)
+        this.screen.appendChild(this.easySwitchView.get())
+
+        this.mediumSwitchView = new SwitchView('нормально', true)
+        this.screen.appendChild(this.mediumSwitchView.get())
+
+        this.hardSwitchView = new SwitchView('важко', false)
+        this.screen.appendChild(this.hardSwitchView.get())
 
         this.startBtn = createElement('button', ['action-button', 'welcome-start-button', 'action-button--active', 'action-button--available'], 'почнімо')
         this.screen.appendChild(this.startBtn)
 
+    }
+
+    bindDifficultyModeSwitchButtons(handler) {
+        this.easySwitchView.bindToggle((checked) => {
+            if(checked == true) {
+                handler('easy')
+                this.mediumSwitchView.toggle(false)
+                this.hardSwitchView.toggle(false)
+            } else {
+                handler('medium')
+                this.mediumSwitchView.toggle(true)
+            }
+        })
+        this.mediumSwitchView.bindToggle(checked => {
+            if(checked == true) {
+                handler('medium')
+                this.easySwitchView.toggle(false)
+                this.hardSwitchView.toggle(false)
+            } else {
+                handler('hard')
+                this.hardSwitchView.toggle(true)
+            }
+        })
+        this.hardSwitchView.bindToggle(checked => {
+            if(checked == true) {
+                handler('hard')
+                this.easySwitchView.toggle(false)
+                this.mediumSwitchView.toggle(false)
+            } else {
+                handler('easy')
+                this.easySwitchView.toggle(true)
+            }
+        })
     }
 
     bindStartBtn(handler) {

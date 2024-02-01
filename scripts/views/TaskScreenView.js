@@ -6,6 +6,7 @@ import ProgressBarView from "./ProgressBarView.js"
 import ListenTaskView from "./ListenTaskView.js"
 import FillTaskView from "./FillTaskView.js"
 import FillMatchTaskView from "./FillMatchTaskView.js"
+import IsCorrectTaskView from "./IsCorrectTaskView.js"
 
 class TaskScreenView {
   constructor() {
@@ -88,6 +89,15 @@ class TaskScreenView {
           this.checkBtn.classList.add('action-button--available')
         })
         break
+      }
+      case 'is-correct': {
+        const isCorrectTaskView = new IsCorrectTaskView(this.taskContainer)
+        isCorrectTaskView.render(task)
+        isCorrectTaskView.bindAnswer(answer => {
+          this.userAnswer = answer
+          this.checkBtn.classList.add('action-button--active')
+          this.checkBtn.classList.add('action-button--available')
+        })
       }
     }
   }

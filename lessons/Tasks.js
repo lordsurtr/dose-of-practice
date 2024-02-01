@@ -79,3 +79,12 @@ export class FillMatchTask extends Task {
     this.text = text
   }
 }
+
+export class IsCorrectTask extends Task {
+  constructor(word, sentence, correctAnswers, checkText) {
+    super(word, correctAnswers, checkText) 
+    this.type = 'is-correct'
+    this.sentence = sentence
+    this.options = ['правильно', 'неправильно']
+  }
+}

@@ -26,6 +26,10 @@ export default class SwitchView {
         return this.switchContainer
     }
 
+    toggle(on) {
+        this.switchInput.checked = on
+    }
+
     bindToggle(handler) {
         this.switchInput.addEventListener('input', () => {
             handler(this.switchInput.checked)
