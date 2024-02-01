@@ -26,18 +26,16 @@ class AnswersDialogView {
 
       const answerType = createElement('p', ['answers-dialog-type'], `#${log.type}`)
       if(log.correct == 'correct') {
-        answerType.textContent = `Правильно #${log.type}`
+        answerType.textContent = `Правильно `
       } else if (log.correct == 'incorrect') {
-        answerType.textContent = `Неправильно #${log.type}`
+        answerType.textContent = `Неправильно `
       } else {
-        answerType.textContent = `Майже #${log.type}`
+        answerType.textContent = `Майже правильно`
       }
       answerItem.appendChild(answerType)
 
-      if(log.auxilaryInfo) {
-        const auxilaryInfo = createElement('p', ['answers-dialog-auxilary'], log.auxilaryInfo)
-        answerItem.appendChild(auxilaryInfo)
-      }
+      const answerQuestion = createElement('p', ['answers-dialog-auxilary'], log.question + ' ' + log.text)
+      answerItem.appendChild(answerQuestion)
 
       const correctAnswer = createElement('h2', ['answers-dialog-answer'])
       correctAnswer.innerHTML =  `Правильна відповідь: <span class="answers-dialog-highlight">${log.correctAnswer}</span>`
@@ -45,7 +43,7 @@ class AnswersDialogView {
 
       const userAnswer = createElement('h2', ['answers-dialog-user-answer'])
       userAnswer.innerHTML =  `Твоя відповідь: <span class=\"answers-dialog-highlight">${log.userAnswer}</span>`
-      // userAnswer.classList.add(log.correct ? 'answers-dialog-correct-user-answer' : 'answers-dialog-wrong-user-answer')
+
       if(log.correct == 'correct' || log.correct == 'almost') {
         userAnswer.classList.add('answers-dialog-correct-user-answer' )
       } else {

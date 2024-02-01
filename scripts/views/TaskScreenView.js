@@ -1,12 +1,9 @@
 
 import { createElement, clearContainer } from "./ViewHelpers.js"
-import MatchTaskView from "./MatchTaskView.js"
-import WriteTaskView from "./WriteTaskView.js"
 import ProgressBarView from "./ProgressBarView.js"
-import ListenTaskView from "./ListenTaskView.js"
-import FillTaskView from "./FillTaskView.js"
-import FillMatchTaskView from "./FillMatchTaskView.js"
-import IsCorrectTaskView from "./IsCorrectTaskView.js"
+import OptionsView from "./OptionsView.js"
+import WriteView from "./WriteView.js"
+import AssembleView from "./AssembleView.js"
 
 class TaskScreenView {
   constructor() {
@@ -39,67 +36,39 @@ class TaskScreenView {
     this.userAnswer = ''
     clearContainer(this.taskContainer)
     this.progressBar.updateProgress(taskNumber)
-    switch(task.type) {
-      case 'match': {
-        const matchTaskView = new MatchTaskView(this.taskContainer)
-        matchTaskView.render(task)
-        matchTaskView.bindAnswer((answer) => {
-          this.userAnswer = answer
-          this.checkBtn.classList.add('action-button--active')
-          this.checkBtn.classList.add('action-button--available')
-        })
-        break
-      }
-      case 'write': {
-        const writeTaskView = new WriteTaskView(this.taskContainer)
-        writeTaskView.render(task)
-        writeTaskView.bindAnswer((answer) => {
-          this.userAnswer = answer
-          this.checkBtn.classList.add('action-button--active')
-          this.checkBtn.classList.add('action-button--available')
-        })
-        break
-      }
-      case 'listen': {
-        const listenTaskView = new ListenTaskView(this.taskContainer)
-        listenTaskView.render(task)
-        listenTaskView.bindAnswer(answer => {
-          this.userAnswer = answer
-          this.checkBtn.classList.add('action-button--active')
-          this.checkBtn.classList.add('action-button--available')
-        })
-        break
-      }
-      case 'fill': {
-        const fillTaskView = new FillTaskView(this.taskContainer)
-        fillTaskView.render(task)
-        fillTaskView.bindAnswer(answer => {
-          this.userAnswer = answer
-          this.checkBtn.classList.add('action-button--active')
-          this.checkBtn.classList.add('action-button--available')
-        })
-        break
-      }
-      case 'fill-match': {
-        const fillMatchTaskView = new FillMatchTaskView(this.taskContainer)
-        fillMatchTaskView.render(task)
-        fillMatchTaskView.bindAnswer(answer => {
-          this.userAnswer = answer
-          this.checkBtn.classList.add('action-button--active')
-          this.checkBtn.classList.add('action-button--available')
-        })
-        break
-      }
-      case 'is-correct': {
-        const isCorrectTaskView = new IsCorrectTaskView(this.taskContainer)
-        isCorrectTaskView.render(task)
-        isCorrectTaskView.bindAnswer(answer => {
-          this.userAnswer = answer
-          this.checkBtn.classList.add('action-button--active')
-          this.checkBtn.classList.add('action-button--available')
-        })
-      }
+  
+    this.question = createElement('h2', ['task-question'], task.question)
+    this.taskContainer.appendChild(this.question)
+
+    this.taskText = createElement('h1', ['question-highlight'], task.text)
+    this.taskContainer.appendChild(this.taskText)
+
+    this.taskHint = createElement('p', ['task-hint'], task.hint)
+    this.taskContainer.appendChild(this.taskHint)
+
+    if(task.type.includes('match')) {
+      let optionContainer = new OptionsView(task.options, clickedOption => {
+        this.userAnswer = clickedOption
+        this.checkBtn.classList.add('action-button--active')
+        this.checkBtn.classList.add('action-button--available')
+      })
+      this.taskContainer.appendChild(optionContainer.getElement())
+    } else if (task.type.includes('write')) {
+      let writeContainer = new WriteView(userInput => {
+        this.userAnswer = userInput
+        this.checkBtn.classList.add('action-button--active')
+        this.checkBtn.classList.add('action-button--available')
+      })
+      this.taskContainer.appendChild(writeContainer.getElement())
+    } else if (task.type.includes('assemble')){
+      let assembleContainer = new AssembleView(task.assembled, userInput => {
+        this.userAnswer = userInput
+        this.checkBtn.classList.add('action-button--active')
+        this.checkBtn.classList.add('action-button--available')
+      })
+      this.taskContainer.appendChild(assembleContainer.getElement())
     }
+
   }
 
   bindCheckBtn(handler) {

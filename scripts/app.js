@@ -1,11 +1,11 @@
 
 import LessonModel from './models/LessonModel.js'
 import WelcomeScreenView from './views/WelcomeScreenView.js'
-import TaskScreenView from './views/TaskScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces} from './Helpers.js'
+import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces, shuffleArray} from './Helpers.js'
+import TaskScreenView from './views/TaskScreenView.js'
 
 const lessonModel = new LessonModel()
 const welcomeScreenView = new WelcomeScreenView()
@@ -41,7 +41,8 @@ const isCorrect = (userAnswer, task) => {
 
 const handleStartBtn = () => {
 
-  currentTasks = shuffleTasksByDifficulty(currentLesson.tasks)
+  // currentTasks = shuffleTasksByDifficulty(currentLesson.tasks)
+  currentTasks = shuffleArray(currentLesson.tasks)
   if(!includeListeningExercises) {
     currentTasks = filterTasks(currentTasks, 'listen')
   }
@@ -56,9 +57,9 @@ const handleCheckBtn = (answer) => {
 
   answerLog.push({
     type: thisTask.type,
-    auxilaryInfo: thisTask.getAnswerView().auxilary,
-    correctAnswer: thisTask.getAnswerView().answer,
-    // correctAnswer: `${thisTask.checkText ? thisTask.checkText : thisTask.getAutoCheckText()}`,
+    question: thisTask.question,
+    text: thisTask.text,
+    correctAnswer: thisTask.correctAnswers[0],
     userAnswer: answer,
     correct: isAnswerCorrect,
   })
@@ -67,7 +68,7 @@ const handleCheckBtn = (answer) => {
   if(thisTask.checkText) {
     checkDialogView.setDialog(isAnswerCorrect, thisTask.checkText)
   } else {
-    checkDialogView.setDialog(isAnswerCorrect, thisTask.getAutoCheckText())
+    checkDialogView.setDialog(isAnswerCorrect, thisTask.correctAnswers[0])
   }
   checkDialogView.toggleDialog(true)
 }
