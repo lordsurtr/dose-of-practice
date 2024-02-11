@@ -31,6 +31,9 @@ class WelcomeScreenView {
         this.hardSwitchView = new SwitchView('важко', false)
         this.screen.appendChild(this.hardSwitchView.get())
 
+        this.allSwitchView = new SwitchView('всі завдання', false)
+        this.screen.appendChild(this.allSwitchView.get())
+
         this.startBtn = createElement('button', ['action-button', 'welcome-start-button', 'action-button--active', 'action-button--available'], 'почнімо')
         this.screen.appendChild(this.startBtn)
 
@@ -42,6 +45,7 @@ class WelcomeScreenView {
                 handler('easy')
                 this.mediumSwitchView.toggle(false)
                 this.hardSwitchView.toggle(false)
+                this.allSwitchView.toggle(false)
             } else {
                 handler('medium')
                 this.mediumSwitchView.toggle(true)
@@ -52,6 +56,7 @@ class WelcomeScreenView {
                 handler('medium')
                 this.easySwitchView.toggle(false)
                 this.hardSwitchView.toggle(false)
+                this.allSwitchView.toggle(false)
             } else {
                 handler('hard')
                 this.hardSwitchView.toggle(true)
@@ -62,6 +67,18 @@ class WelcomeScreenView {
                 handler('hard')
                 this.easySwitchView.toggle(false)
                 this.mediumSwitchView.toggle(false)
+                this.allSwitchView.toggle(false)
+            } else {
+                handler('all')
+                this.allSwitchView.toggle(true)
+            }
+        })
+        this.allSwitchView.bindToggle(checked => {
+            if(checked == true) {
+                handler('all')
+                this.easySwitchView.toggle(false)
+                this.mediumSwitchView.toggle(false)
+                this.hardSwitchView.toggle(false)
             } else {
                 handler('easy')
                 this.easySwitchView.toggle(true)

@@ -1,69 +1,140 @@
 
 import Lesson from "./Lesson.js";
-import {MatchTask, WriteTask, ListenTask, FillTask, FillMatchTask} from "./Tasks.js"
+import { FillMatchTask, FillWriteTask, IsCorrectTask, SentenceAssemble, TranslateMatchTask, TranslateWriteTask } from "./Tasks.js";
 
 const lesson = new Lesson('The Prestige', [
-  new MatchTask(
+  // EASY TASKS 
+  new TranslateMatchTask(
     'to consist of',
     'consist of',
-    ['складатися з', 'містити', 'залежати від'],
-    ['складатися з'],
+    ['складатися з', 'з\'єднувати', 'містити'],
+    ['складатися з']
   ),
-  new MatchTask(
+  new TranslateMatchTask(
     'endeavor',
     'endeavor',
     ['намагання', 'ціль', 'виклик'],
     ['намагання']
   ),
-  new WriteTask(
+  new TranslateMatchTask(
     'significance',
     'значимість',
-    ['significance', 'the significance', 'a significance'],
+    ['significance', 'significant', 'important'],
+    ['significance']
   ),
-  new WriteTask(
-    'to seem',
-    'здаватися',
-    ['to seem', 'seem', 'to give up', 'give up'],
-    'to seem - здаватися (мені здається...)<br>to give up - здаватися (я здаюся...)'
-  ),
-  new WriteTask(
-    'next to',
-    'поряд зі мною',
-    ['next to me', 'by my side'],
-    'поряд зі мною - next to me / by my side'
-  ),
-  new ListenTask(
+  new TranslateMatchTask(
     'to interfere with',
-    'Do not interfere with my creative process',
-    'Не заважай моєму творчому процесу',
-    ['do not interfere with my creative process']
+    'заважати',
+    ['to interfere with', 'to interfere to', 'to interfere on'],
+    ['to interfere with']
   ),
-  new ListenTask(
-    'endeavor',
-    'We have to help him in his endeavor',
-    'Ми маємо допомогти йому в його зусиллях',
-    ['we have to help him in his endeavor']
+
+  new FillMatchTask(
+    'to consist of',
+    'The book ___ __ four chapters.',
+    ['consists of', 'consists', 'consists with'],
+    ['consists of'],
   ),
+  // new FillMatchTask(
+  //   'endeavor',
+  //   ''
+  // ),
   new FillMatchTask(
     'significance',
-    'This research is of big _____.',
-    ['significance', 'significant', 'important'],
-    ['significance'],
-    'This research is of big significance - Це дослідження має велике значення.'
-  ),
-  new FillTask(
-    'to consits of',
-    'The book ____ of 10 chapters',
-    ['consists'],
-    'The book consists of 10 chapters. - Книга складаєтсья з 10 розділів.'
+    'This event is of big _____ me.',
+    ['significance to', 'important to', 'significance'],
+    ['significance to'],
+    'Ця подія для мене дуже важлива'
   ),
   new FillMatchTask(
     'to interfere with',
-    'I will not ____ with your plans.',
-    ['interfere', 'stop', 'annoy'],
-    ['interfere'],
-    'I will not interfere with your plans. - Я не буду перешкоджати твоїм планам.'
-  )
+    'Do not _____ __ my creative process',
+    ['interfere with', 'interfere', 'annoy'],
+    ['interfere with'],
+    'Не заважай моєму творчому процесу'
+  ),
+
+  // MEDIUM MODE TASKS
+  new IsCorrectTask(
+    'to consist of',
+    'The event consists with three parts',
+    ['неправильно'],
+  ),
+  new IsCorrectTask(
+    'endeavor',
+    'Language learning is a hard endeavor.',
+    ['правильно']
+  ),
+  new IsCorrectTask(
+    'significance',
+    'You can\'t miss an event of such significant!',
+    ['неправильно']
+  ),
+  new IsCorrectTask(
+    'to interfere with',
+    'Please, do not interfere.',
+    ['правильно'],
+  ),
+
+  new TranslateWriteTask(
+    'to consist of',
+    'складатися з',
+    ['to consist of', 'consist of', 'consists of'],
+  ),
+  new TranslateWriteTask(
+    'endeavor',
+    'намагання',
+    ['endeavor', 'edeavour', 'the endeavor', 'the endeavour', 'an endeavor', 'an endeavour'],
+    'e*****r'
+  ),
+  new TranslateWriteTask(
+    'significance',
+    'значимість',
+    ['significance', 'the significance'],
+    's***********'
+  ),
+  new TranslateWriteTask(
+    'to interfere with',
+    'заважати',
+    ['to interfere with', 'to interfere', 'interfere with', 'interfere'],
+  ),
+
+  // HARD MODE TASKS 
+  new SentenceAssemble(
+    'to consist of',
+    'Наш план складатиметься з трьох стадій.',
+    'Our plan will consist of three stages. consists with',
+    ['our plan will consist of three stages'],
+  ),
+  new SentenceAssemble(
+    'endeavor',
+    'Новини показали наші останні успішні воєнні намагання.',
+    'The news showed our latest successful military endeavors. late a',
+    ['the news showed our latest successful military endeavors']
+  ),
+  new SentenceAssemble(
+    'significance',
+    'Важко недооцінювати значення цього артефакту.',
+    'It\'s hard to underestimate the significance of this artifact.',
+    ['it\'s hard to underestimate the significance of this artifact']
+  ),
+  new SentenceAssemble(
+    'to interfere with',
+    'Це їхня проблема, і я не збираюся заважати.',
+    'It\'s their problem and I\'m not going to interfere.',
+    ['it\'s their problem and i\'m not going to interfere']
+  ),
+
+  new FillWriteTask(
+    'to consist of',
+    'A computer ____ __ many parts.',
+    ['consists of'],
+    'Комп\'ютер складається з багатьох частин.'
+  ),
+  // new FillWriteTask(
+  //   'significance',
+  //   ''
+  // )
 ])
 
 export default lesson

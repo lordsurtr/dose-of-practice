@@ -4,7 +4,7 @@ import WelcomeScreenView from './views/WelcomeScreenView.js'
 import CheckDialogView from './views/CheckDialogView.js'
 import ResultScreenView from './views/ResultScreenView.js'
 import AnswersDialogView from './views/AnswersDialogView.js'
-import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces, shuffleArray, getTasksOfDifficulty} from './Helpers.js'
+import { calculateSpellingDistance, filterTasks, removePunctuation, shuffleTasksByDifficulty , removeDoubleSpaces, shuffleArray, getTasksOfDifficulty, getCutArray} from './Helpers.js'
 import TaskScreenView from './views/TaskScreenView.js'
 
 const lessonModel = new LessonModel()
@@ -27,7 +27,8 @@ const isCorrect = (userAnswer, task) => {
   let maxMistakes = task.type.includes('match') ? 0 : 1
 
   task.correctAnswers.forEach(ans => {
-    let spellingDistance = calculateSpellingDistance(ans, cleanAnswer)
+    let cleanTaskAnswer = removePunctuation(removeDoubleSpaces(ans).toLowerCase().trim())
+    let spellingDistance = calculateSpellingDistance(cleanTaskAnswer, cleanAnswer)
     if(spellingDistance  == 0) {
       correct = 'correct'
       return
@@ -42,13 +43,17 @@ const isCorrect = (userAnswer, task) => {
 
 const handleStartBtn = () => {
 
-  currentTasks = shuffleArray(getTasksOfDifficulty(difficulty, currentLesson.tasks))
+  if(difficulty == 'all') {
+    currentTasks = getCutArray(shuffleArray(currentLesson.tasks), 10)
+  } else {
+    currentTasks = shuffleArray(getTasksOfDifficulty(difficulty, currentLesson.tasks))
+  }
+
 
   if(!includeListeningExercises) {
     currentTasks = filterTasks(currentTasks, 'listen')
   }
   taskScreenView.render(currentTasks.length)
-  console.log(currentTasks)
   taskScreenView.renderTask(currentTasks[currentTask], currentTask)
 }
 
@@ -110,7 +115,7 @@ const handleIncludeListeningExercisesSwitchToggle = (on) => {
 
 
 const start = async () => {
-  const lesson = await lessonModel.getLesson('2')
+  const lesson = await lessonModel.getLesson('the-prestige')
   currentLesson = lesson
 
   const words = lessonModel.getWordsFromLesson(lesson)

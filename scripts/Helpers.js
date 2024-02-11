@@ -1,19 +1,56 @@
 
 
 export const shuffleArray = (array) => {
-    return Array.from(array).sort(() => Math.random() - 0.5)
+  // return Array.from(array).sort(() => Math.random() - 0.5)
+
+  let arrayCopy = [...array]
+
+  let currentIndex = arrayCopy.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [arrayCopy[currentIndex], arrayCopy[randomIndex]] = [
+      arrayCopy[randomIndex], arrayCopy[currentIndex]];
+  }
+
+  return arrayCopy
 }
 
-export const getTasksOfDifficulty = (difficulty, tasks) => {
+export const getTasksOfDifficulty = (difficulty, tasks, limit) => {
+
+  let filtered
+
   if(difficulty == 'easy') {
-    return tasks.filter(task => task.type == 'translate-match' || task.type == 'fill-match')
+    filtered = tasks.filter(task => task.type == 'translate-match' || task.type == 'fill-match')
   } else if (difficulty == 'medium') {
-    return tasks.filter(task => task.type == 'translate-write' || task.type == 'correct-match')
+    filtered = tasks.filter(task => task.type == 'translate-write' || task.type == 'correct-match')
   } else if (difficulty == 'hard') {
-    return tasks.filter(task => task.type == 'fill-write' || task.type == 'sentence-assemble')
+    filtered = tasks.filter(task => task.type == 'fill-write' || task.type == 'sentence-assemble')
   } else {
     throw new Error('UNKNOWN DIFFICULTY')
   }
+
+  return filtered
+}
+
+export const getCutArray = (array, limit) => {
+  let limited = []
+
+  for(let i = 0; i < array.length; i++) {
+    if(i < limit) {
+      limited.push(array[i])
+    } else {
+      break
+    }
+  }
+
+  return limited
 }
 
 export const shuffleTasksByDifficulty = (array) => {
